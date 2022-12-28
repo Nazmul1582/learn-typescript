@@ -3,6 +3,16 @@
     <h1 align="center"> TypeScript Introduction and Installation</h1>
 </p>
 
+<!-- TABLE OF CONTENTS -->
+
+## Table of Contents
+
+- [TypeScript](#typescript)
+  - [What is typescript?](#what-is-typescript)
+  - [What's wrong with JavaScript?](#whats-wrong-with-javascript)
+  - [Benefits of typescript](#benefits-of-typescript)
+  - [Installing typescript](#installing-typescript)
+
 # TypeScript
 
 ## What is typescript?
