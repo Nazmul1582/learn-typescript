@@ -18,3 +18,6 @@
    So, write `tsc script.ts` in terminal and hit enter. Then see the output.
 5. TypeScript vanilla JavaScript এ convert হয়
 6. এখন আমরা একটা TypeScript প্রজেক্ট initialize করব। সেজন্য `tsc –init` commad দিব তাহলে `tsconfig.json` নামে একটা ফাইল তৈরি হবে। `tsconfig.json` ফাইলটা হচ্ছে ট্রান্সক্রিপ্টের কনফিগারেশন ফাইল। এ ফাইলটা typescript কম্পাইলার রিড করতে পারে। এবং সেখানে বিভিন্ন ধরনের configuration variable বলে দেওয়া আছে।
+7. Modify input directory => `"rootDir": "./src"` in compilerOptions of `tsconfig.json`
+8. Modify input directory => `"outDir": "./output"` in compilerOptions of `tsconfig.json`
+9. Now write command only `tsc` ( not need `tsc fileName`).
