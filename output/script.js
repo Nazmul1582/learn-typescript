@@ -1,3 +1,4 @@
 "use strict";
-const myName = "Md. Nazmul Hasan Shikder";
-console.log(myName);
+const a = 10;
+const b = 5;
+console.log(`total:` + (a + b));
