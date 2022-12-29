@@ -1,3 +1,4 @@
 "use strict";
 const myName = "Md. Nazmul Hasan";
-console.log(myName);
+const prof = "student";
+console.log(`I'm ${myName} and I'm a ${prof} `);
