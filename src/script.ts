@@ -1,50 +1,29 @@
-// How to use Functions - TypeScript - Lesson6
+// Type Aliases - TypeScript - Lesson7
+// without using type aliases
 
-// let myFunc: Function;
-
-// myFunc = () => {
-//   console.log("Hello World!");
+// const userDetails = (
+//   id: number | string,
+//   user: { name: string; age: number }
+// ) => {
+//   console.log(`User id is ${id}, name is ${user.name} and age is ${user.age}`);
 // };
-// // myFunc = 50;  // Type 'number' is not assignable to type 'Function'.
-// myFunc();
+// userDetails(5, { name: "Saikat", age: 24 });
 
-// const myFunc = (a: string, b: string) => {
-//   console.log(`${a} and ${b} are friends`);
+// const sayHello = (user: { name: string; age: number }) => {
+//   console.log(`Hello, ${user.age > 50 ? "Sir" : "Mr."} ${user.name}!`);
 // };
-// myFunc("Nafiz", "Fahim");
-// myFunc(3, 56);  //  Argument of type 'number' is not assignable to parameter of type 'string'.
+// sayHello({ name: "Samim", age: 25 });
 
-// const myFunc = (a: string, b: string, c?: number) => {
-//   return `${a} and ${b} have ${c} pens `;
-// };
-// console.log(myFunc("Nayem", "Bayezid"));
-// console.log(myFunc("Nayem", "Bayezid", 10));
+// using type aliases
+type stringOrNum = string | number;
+type userType = { name: string; age: number };
 
-// const myFunc = (a: string, b: string, c: number = 25) => {
-//   return `${a} and ${b} have ${c} books`;
-// };
-// console.log(myFunc("Nahid", "Fahim"));
-// console.log(myFunc("Nahid", "Fahim", 20));
+const userDetails = (id: stringOrNum, user: userType) => {
+  console.log(`User id is ${id}, name is ${user.name} and age is ${user.age}`);
+};
+userDetails(101, { name: "Saikat", age: 24 });
 
-// const add = (a: string, b: string) => {   // it's return void
-//   console.log(a + b);
-// };
-// add("Hello ", "World!");
-
-// const add = (a: string, b: string) => {
-//   // it's return number
-//   return Number(a + b);
-// };
-// console.log(add("4", "5"));
-
-// const myFunc = (a: string, b: string, c: number = 10): string => {
-//   // it's return string
-//   return `${a} and ${b} have ${c} pens`;
-// };
-// console.log(myFunc("Sifat", "Nafiz"));
-
-// const myFunc = (a: string, b: string, c: number = 10): string => {
-//   // it's return number
-//   return Number(`${a} and ${b} have ${c} pens`);    // Error: Type 'number' is not assignable to type 'string'.
-// };
-// console.log(myFunc("Sifat", "Nafiz"));
+const sayHello = (user: userType) => {
+  console.log(`Hello, ${user.age > 50 ? "Sir" : "Mr."} ${user.name}!`);
+};
+sayHello({ name: "Sakil", age: 27 });
