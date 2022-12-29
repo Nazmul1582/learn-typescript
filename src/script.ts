@@ -26,4 +26,4 @@ userDetails(101, { name: "Saikat", age: 24 });
 const sayHello = (user: userType) => {
   console.log(`Hello, ${user.age > 50 ? "Sir" : "Mr."} ${user.name}!`);
 };
-sayHello({ name: "Sakil", age: 27 });
+sayHello({ name: "Tariqul Islam", age: 27 });
