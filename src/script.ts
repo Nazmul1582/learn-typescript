@@ -37,11 +37,11 @@
 // };
 // console.log(add("4", "5"));
 
-// const myFunc = (a: string, b: string, c: number = 10): string => {
-//   // it's return string
-//   return `${a} and ${b} have ${c} pens`;
-// };
-// console.log(myFunc("Sifat", "Nafiz"));
+const myFunc = (a: string, b: string, c: number = 10): string => {
+  // it's return string
+  return `${a} and ${b} have ${c} pens`;
+};
+console.log(myFunc("Sifat", "Nafiz"));
 
 // const myFunc = (a: string, b: string, c: number = 10): string => {
 //   // it's return number
