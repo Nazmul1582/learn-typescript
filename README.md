@@ -7,7 +7,11 @@
 
 ### Table of Contents
 
-- [Explicit & Union Types](#explicit--union-types) -[Explicit & Union Types for variable](#explicit--union-types-for-variable) -[Explicit & Union Types for array](#explicit--union-types-for-array) -[Explicit & Union Types for object](#explicit--union-types-for-object)
+- [Explicit & Union Types](#explicit--union-types)
+  - [Explicit & Union Types for variable](#explicit--union-types-for-variable)
+  - [Explicit & Union Types for function](#explicit--union-types-for-function)
+  - [Explicit & Union Types for array](#explicit--union-types-for-array)
+  - [Explicit & Union Types for object](#explicit--union-types-for-object)
 
 ## Explicit & Union Types
 

@@ -83,4 +83,4 @@ console.log(sum(10, 20));
 function greet(name: string, greeting: string) {
   return `${greeting}, ${name}! `;
 }
-console.log(greet("Nafiz", "Good morging"));
+console.log(greet("Fahim", "Good morging"));
