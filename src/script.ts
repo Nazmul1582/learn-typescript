@@ -49,4 +49,6 @@ let userDetails: (
 userDetails = (
   userId: string | number,
   user: { name: string; age: number }
-) => {};
+) => {
+  //
+};
