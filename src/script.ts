@@ -81,4 +81,4 @@
 // player.address = "Magura";    // Property 'address' does not exist on type '{ name: string; age: number; isCaptain: boolean; }'
 
 // const obj = {};
-// obj.name = "Fahim"; // Property name does not exist on type {},
+// obj.name = "Sifat"; // Property name does not exist on type {},
