@@ -1,71 +1,93 @@
 <br />
  <p align="center">
-    <h1 align="center"> Dynamic Type or any Type - TypeScript - Lesson5 </h1>
+    <h1 align="center"> How to use Functions - TypeScript - Lesson6 </h1>
 </p>
 
 <!-- TABLE OF CONTENTS -->
 
 ### Table of Contents
 
-- [Dynamic Type](#dynamic-type)
-  - [Variable](#variable)
-  - [Function](#function)
-  - [Array](#array)
-  - [Union Type](#union-type)
-  - [Object](#object)
+- [Function Type](#function-type)
+- [Function Parameter](#function-parameter)
+- [Optional Parameter](#optional-parameter)
+- [ Default Parameter](#default-parameter)
+- [Return Type](#return-type)
+- [Explicit Return Type](#explicit-return-type)
 
-## Dynamic Type
-
-### Variable
+## Function Type
 
 ```typescript
-let a;
-a = "Bangladesh";
-a = 123;
-a = true;
-console.log(a);
-```
+let myFunc: Function;
 
-```typescript
-let a: any;
-a = "Saikat";
-a = 24;
-a = true;
-console.log(a);
-```
-
-## Function
-
-```typescript
-const myFunc = (a: any) => {
-  return `type of '${a}' is a ${typeof a}`;
+myFunc = () => {
+  console.log("Hello World!");
 };
-console.log(myFunc(3));
-console.log(myFunc("Mother"));
-console.log(myFunc(false));
+myFunc = 50; // Error: Type 'number' is not assignable to type 'Function'.
+myFunc();
 ```
 
-## Array
+## Function Parameter
 
 ```typescript
-const arr: any[] = [];
-arr.push("fruits", 120, true, null);
-console.log(arr);
+const myFunc = (a: string, b: string) => {
+  console.log(`${a} and ${b} are friends`);
+};
+myFunc("Nafiz", "Fahim");
+myFunc(3, 56); // Error: Argument of type 'number' is not assignable to parameter of type 'string'.
 ```
 
-## Object
+## Optional Parameter
 
 ```typescript
-let c: {
-  name: any;
-  age: any;
-  isMarried: any;
+const myFunc = (a: string, b: string, c?: number) => {
+  return `${a} and ${b} have ${c} pens `;
 };
+console.log(myFunc("Nayem", "Bayezid"));
+console.log(myFunc("Nayem", "Bayezid", 10));
+```
 
-c = {
-  name: "Saikat",
-  age: 24,
-  isMarried: false,
+## Default Parameter
+
+```typescript
+const myFunc = (a: string, b: string, c: number = 25) => {
+  return `${a} and ${b} have ${c} books`;
 };
-console.log(c);
+console.log(myFunc("Nahid", "Fahim"));
+console.log(myFunc("Nahid", "Fahim", 20));
+```
+
+## Return Type
+
+```typescript
+const add = (a: string, b: string) => {
+  // it's return void
+  console.log(a + b);
+};
+add("Hello ", "World!");
+```
+
+```typescript
+const add = (a: string, b: string) => {
+  // it's return number
+  return Number(a + b);
+};
+console.log(add("4", "5"));
+```
+
+## Explicit Return Type
+
+```typescript
+const myFunc = (a: string, b: string, c: number = 10): string => {
+  // it's return string
+  return `${a} and ${b} have ${c} pens`;
+};
+console.log(myFunc("Sifat", "Nafiz"));
+```
+
+```typescript
+const myFunc = (a: string, b: string, c: number = 10): string => {
+  // it's return number
+  return Number(`${a} and ${b} have ${c} pens`); // Error: Type 'number' is not assignable to type 'string'.
+};
+console.log(myFunc("Sifat", "Nafiz"));
 ```
