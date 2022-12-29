@@ -1,1 +1,2 @@
-console.log("Hello World!");
+const myName = "Md. Nazmul Hasan";
+console.log(myName);
