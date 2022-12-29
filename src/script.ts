@@ -1,84 +1,86 @@
-// strict type checking
+// Explicit & Union Types - TypeScript
 
-// ============== for variable ===============
-// // (1) ============
+// ============= variable ================
 
-// let playerName = "Mashrafi";
-// let age = 35
+// let a: number;
+// a = 10;
+// a = "Bangla";        // Type 'string' is not assignable to type 'number
+// console.log(a);
 
-// console.log(playerName);
+// let b: string;
+// // b = 100;         // type number is not assignable to type string
+// b = "Bangladesh";
+// console.log(b);
 
-// // playerName = 34; // Type 'number' is not assignable to type 'string'
-// age = 'sakib'   // Type 'string' is not assignable to type 'number'
-// // playerName = true;   // Type 'boolean' is not assignable to type 'string'.
+// let c: string | number;
+// c = "Hello";
+// c = 15;
+// // c = true; // type boolean is not assignable to type (string | number)
 
-// // (2) ===========
-// var num = 20;
-// // num = num - '10'; // here 10 show's error!
-// console.log(num);
+// ========== array ===========
 
-// // (3) =========
-// let isValid = true;
-// // isValid = "false"; // Type 'string' is not assignable to type 'boolean'
+// let a: string[] = [];
+// a.push("Bangladesh");
+// // a.push(50); //  Argument of type 'number' is not assignable to parameter of type 'string'.
+// console.log(a);
 
-// let playerName;     // here playerName is undefined. So, it's type is 'any'. and it's possibile to re-assign
-// console.log(playerName);
-// playerName = "Mashrafi";    // no error
-// playerName = 35;    // no error
+// const a:number[] = [];
+// a.push("Banana"); // Type 'string' is not assignable to type 'number
 
-// console.log(playerName);
+// let a: string[];
+// a = ["Bangla"];
+// a.push("English");
+// a.push(20); //  Argument of type 'number' is not assignable to parameter of type 'string'.
+// console.log(a);
 
-// ============== for function ===================
+// union type ===========
 
-// function sum(a, b) {
-//   // Parameter 'a' and 'b' implicitly have an 'any' type
-//   return a + b;
-// }
-// console.log(sum(5, 10));
+// let a: (string | number)[] = [];
+// a.push("Bangladesh");
+// a.push(1971);
+// a.push(Boolean); // Argument of type 'BooleanConstructor' is not assignable to parameter of type 'string | number'.
 
-// function multiply(a, b) {
-//   return a * b;
-// }
-// console.log(multiply("sakib", 5));
+// const b: (string | number)[] = [];
+//  b.push("Nazmul", 24, true); // // Argument of type 'true' is not assignable to parameter of type 'string | number'.
 
-// function multiply(a: number, b: number) {
-//   return a * b;
-// }
-// console.log(multiply("abc", 6));        // Argument of type 'string' is not assignable to parameter of type 'number'.
+//  =========== object ===========
 
-// ============== for array ===================
+// let c: object;
+// // c = 5; // Type 'number' is not assignable to type 'object'.
+// // c = "Nazmul";   // Type 'string' is not assignable to type 'object'.
+// // c = [1, 2, "three", true];  // work perfectlly. because javascript array is a kind of object.
+// // c = {};
+// c = {
+//   name: "Nazmul",
+//   age: 24,
+// };
+// console.log(c);
 
-// const fruits = ["apple", "banana"];
-// fruits.push("pineapple");
-// console.log(fruits);
+let c: {
+  name: string;
+  age: number;
+  adult: boolean;
+};
 
-// const fruits = ["apple", "banana"]; // here fruits type is string. So, it's not take other type of property
-// fruits.push(35); // Argument of type 'number is not assignable to parameter of type 'string'
-// console.log(fruits);
-
-// const arr = []; // type any
-// arr.push("Bangladesh");
-// arr.push(150);
-// arr.push(false);
-// arr.push(undefined);
-// console.log(arr);
-
-// const arr = ["hello", 12, true]; // here type is 'string | number | boolean'.
-// arr.push("Sakib");
-// arr.unshift(100);
-// arr.push({ a: 5, b: 10 });  // Argument of type '{ a: number; b: number; }' is not assignable to parameter of type 'string | number | boolean'.
-// console.log(arr);
-
-// ============== for object ===================
-// const player = {
-//   // here player is player={name: string, age: number, isCaptain: boolean}
-//   name: "Mashrafi",
-//   age: 35,
-//   isCaptain: true,
+// c = {
+//   name: "Nazmul", // Type '{ name: string; }' is missing the following properties from type '{ name: string; age: number; adult: boolean; }': age, adult
 // };
 
-// // player.age = "thirty-five"; // Type 'string' is not assignabe to type 'number'
-// player.address = "Magura";    // Property 'address' does not exist on type '{ name: string; age: number; isCaptain: boolean; }'
+c = {
+  name: "Nazmul",
+  age: 24,
+  //   adult: "yes", // error
+  adult: true,
+  //   address: "Cumilla", // Object literal may only specify known properties, and 'address' does not exist in type '{ name: string; age: number; adult: boolean; }'.
+};
+console.log(c);
 
-// const obj = {};
-// obj.name = "Fahim"; // Property name does not exist on type {},
+function sum(a: number, b: number) {
+  return a * b;
+}
+console.log(sum(10, 20));
+
+function greet(name: string, greeting: string) {
+  return `${greeting}, ${name}! `;
+}
+console.log(greet("Nafiz", "Good morging"));

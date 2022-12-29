@@ -1,117 +1,125 @@
 <br />
  <p align="center">
-    <h1 align="center"> Type Basics - Lesson3 </h1>
+    <h1 align="center"> Explicit & Union Types - TypeScript - Lesson4 </h1>
 </p>
 
 <!-- TABLE OF CONTENTS -->
 
 ### Table of Contents
 
-- [ Strict Type Checking](#strict-type-checking)
+- [Explicit & Union Types](#explicit--union-types) -[Explicit & Union Types for variable](#explicit--union-types-for-variable) -[Explicit & Union Types for array](#explicit--union-types-for-array) -[Explicit & Union Types for object](#explicit--union-types-for-object)
 
-## Strict Type Checking
+## Explicit & Union Types
 
-### Strict Type Checking for variable
+### Explicit & Union Types for variable
 
 ```typescript
-let playerName = "Mashrafi";
-let age = 35;
-
-console.log(playerName);
-
-playerName = 34; // Type 'number' is not assignable to type 'string'
-age = "sakib"; // Type 'string' is not assignable to type 'number'
-playerName = true; // Type 'boolean' is not assignable to type 'string'.
+let a: number;
+a = 10;
+a = "Bangla"; // Type 'string' is not assignable to type 'number
+console.log(a);
 ```
 
 ```typescript
-var num = 20;
-num = num - "10"; // here 10 show's error!
-console.log(num);
+let b: string;
+// b = 100;         // type number is not assignable to type string
+b = "Bangladesh";
+console.log(b);
 ```
 
 ```typescript
-let isValid = true;
-isValid = "false"; // Type 'string' is not assignable to type 'boolean'
+let c: string | number;
+c = "Hello";
+c = 15;
+// c = true; // type boolean is not assignable to type (string | number)
 ```
 
-```typescript
-let playerName; // here playerName is undefined. So, it's type is 'any'. and it's possibile to re-assign
-console.log(playerName);
-playerName = "Mashrafi"; // no error
-playerName = 35; // no error
-
-console.log(playerName);
-```
-
-## Strict Type Checking for function
+## Explicit & Union Types for function
 
 ```typescript
-function sum(a, b) {
-  // Parameter 'a' and 'b' implicitly have an 'any' type
-  return a + b;
-}
-console.log(sum(5, 10));
-```
-
-```typescript
-function multiply(a, b) {
+function sum(a: number, b: number) {
   return a * b;
 }
-console.log(multiply("sakib", 5));
+console.log(sum(10, 20));
 ```
 
 ```typescript
-function multiply(a: number, b: number) {
-  return a * b;
+function greet(name: string, greeting: string) {
+  return `${greeting}, ${name}! `;
 }
-console.log(multiply("abc", 6)); // Argument of type 'string' is not assignable to parameter of type 'number'.
+console.log(greet("Nafiz", "Good morging"));
 ```
 
-## Strict Type Checking for Array
+## Explicit & Union Types for Array
 
 ```typescript
-const fruits = ["apple", "banana"];
-fruits.push("pineapple");
-console.log(fruits);
-
-const fruits = ["apple", "banana"]; // here fruits type is string. So, it's not take other type of property
-fruits.push(35); // Argument of type 'number is not assignable to parameter of type 'string'
-console.log(fruits);
+let a: string[] = [];
+a.push("Bangladesh");
+// a.push(50); //  Argument of type 'number' is not assignable to parameter of type 'string'.
+console.log(a);
 ```
 
 ```typescript
-const arr = []; // type any
-arr.push("Bangladesh");
-arr.push(150);
-arr.push(false);
-arr.push(undefined);
-console.log(arr);
+const a: number[] = [];
+a.push("Banana"); // Type 'string' is not assignable to type 'number
 ```
 
 ```typescript
-const arr = ["hello", 12, true]; // here type is 'string | number | boolean'.
-arr.push("Sakib");
-arr.unshift(100);
-arr.push({ a: 5, b: 10 }); // Argument of type '{ a: number; b: number; }' is not assignable to parameter of type 'string | number | boolean'.
-console.log(arr);
+let a: string[];
+a = ["Bangla"];
+a.push("English");
+a.push(20); //  Argument of type 'number' is not assignable to parameter of type 'string'.
+console.log(a);
 ```
 
-## Strict Type Checking for Object
+### Union Type
 
 ```typescript
-const player = {
-  // here player is player={name: string, age: number, isCaptain: boolean}
-  name: "Mashrafi",
-  age: 35,
-  isCaptain: true,
+let a: (string | number)[] = [];
+a.push("Bangladesh");
+a.push(1971);
+a.push(Boolean); // Argument of type 'BooleanConstructor' is not assignable to parameter of type 'string | number'.
+```
+
+```typescript
+const b: (string | number)[] = [];
+b.push("Nazmul", 24, true); // // Argument of type 'true' is not assignable to parameter of type 'string | number'.
+```
+
+## Explicit & Union Types for Object
+
+```typescript
+let c: object;
+c = 5; // Type 'number' is not assignable to type 'object'.
+c = "Nazmul"; // Type 'string' is not assignable to type 'object'.
+c = [1, 2, "three", true]; // work perfectlly. because javascript array is a kind of object.
+c = {};
+c = {
+  name: "Nazmul",
+  age: 24,
+};
+console.log(c);
+```
+
+```typescript
+let c: {
+  name: string;
+  age: number;
+  adult: boolean;
 };
 
-player.age = "thirty-five"; // Type 'string' is not assignabe to type 'number'
-player.address = "Magura"; // Property 'address' does not exist on type '{ name: string; age: number; isCaptain: boolean; }'
+c = {
+  name: "Nazmul", // Type '{ name: string; }' is missing the following properties from type '{ name: string; age: number; adult: boolean; }': age, adult
+};
 ```
 
 ```typescript
-const obj = {};
-obj.name = "Fahim"; // Property name does not exist on type {},
+c = {
+  name: "Nazmul",
+  age: 24,
+  //   adult: "yes", // error
+  adult: true,
+  //   address: "Cumilla", // Object literal may only specify known properties, and 'address' does not exist in type '{ name: string; age: number; adult: boolean; }'.
+};
+console.log(c);
 ```
