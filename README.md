@@ -21,3 +21,4 @@
 7. Modify input directory => `"rootDir": "./src"` in compilerOptions of `tsconfig.json`
 8. Modify input directory => `"outDir": "./output"` in compilerOptions of `tsconfig.json`
 9. Now write command only `tsc` ( not need `tsc fileName`).
+10. `tsc -w` command for watch mode. (like nodemon package of node.js)
