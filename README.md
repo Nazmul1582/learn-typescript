@@ -1,129 +1,71 @@
 <br />
  <p align="center">
-    <h1 align="center"> Explicit & Union Types - TypeScript - Lesson4 </h1>
+    <h1 align="center"> Dynamic Type or any Type - TypeScript - Lesson5 </h1>
 </p>
 
 <!-- TABLE OF CONTENTS -->
 
 ### Table of Contents
 
-- [Explicit & Union Types](#explicit--union-types)
-  - [Explicit & Union Types for variable](#explicit--union-types-for-variable)
-  - [Explicit & Union Types for function](#explicit--union-types-for-function)
-  - [Explicit & Union Types for array](#explicit--union-types-for-array)
-  - [Explicit & Union Types for object](#explicit--union-types-for-object)
+- [Dynamic Type](#dynamic-type)
+  - [Variable](#variable)
+  - [Function](#function)
+  - [Array](#array)
+  - [Union Type](#union-type)
+  - [Object](#object)
 
-## Explicit & Union Types
+## Dynamic Type
 
-### Explicit & Union Types for variable
+### Variable
 
 ```typescript
-let a: number;
-a = 10;
-a = "Bangla"; // Type 'string' is not assignable to type 'number
+let a;
+a = "Bangladesh";
+a = 123;
+a = true;
 console.log(a);
 ```
 
 ```typescript
-let b: string;
-// b = 100;         // type number is not assignable to type string
-b = "Bangladesh";
-console.log(b);
-```
-
-```typescript
-let c: string | number;
-c = "Hello";
-c = 15;
-// c = true; // type boolean is not assignable to type (string | number)
-```
-
-## Explicit & Union Types for function
-
-```typescript
-function sum(a: number, b: number) {
-  return a * b;
-}
-console.log(sum(10, 20));
-```
-
-```typescript
-function greet(name: string, greeting: string) {
-  return `${greeting}, ${name}! `;
-}
-console.log(greet("Nafiz", "Good morging"));
-```
-
-## Explicit & Union Types for Array
-
-```typescript
-let a: string[] = [];
-a.push("Bangladesh");
-// a.push(50); //  Argument of type 'number' is not assignable to parameter of type 'string'.
+let a: any;
+a = "Saikat";
+a = 24;
+a = true;
 console.log(a);
 ```
 
-```typescript
-const a: number[] = [];
-a.push("Banana"); // Type 'string' is not assignable to type 'number
-```
+## Function
 
 ```typescript
-let a: string[];
-a = ["Bangla"];
-a.push("English");
-a.push(20); //  Argument of type 'number' is not assignable to parameter of type 'string'.
-console.log(a);
-```
-
-### Union Type
-
-```typescript
-let a: (string | number)[] = [];
-a.push("Bangladesh");
-a.push(1971);
-a.push(Boolean); // Argument of type 'BooleanConstructor' is not assignable to parameter of type 'string | number'.
-```
-
-```typescript
-const b: (string | number)[] = [];
-b.push("Nazmul", 24, true); // // Argument of type 'true' is not assignable to parameter of type 'string | number'.
-```
-
-## Explicit & Union Types for Object
-
-```typescript
-let c: object;
-c = 5; // Type 'number' is not assignable to type 'object'.
-c = "Nazmul"; // Type 'string' is not assignable to type 'object'.
-c = [1, 2, "three", true]; // work perfectlly. because javascript array is a kind of object.
-c = {};
-c = {
-  name: "Nazmul",
-  age: 24,
+const myFunc = (a: any) => {
+  return `type of '${a}' is a ${typeof a}`;
 };
-console.log(c);
+console.log(myFunc(3));
+console.log(myFunc("Mother"));
+console.log(myFunc(false));
 ```
+
+## Array
+
+```typescript
+const arr: any[] = [];
+arr.push("fruits", 120, true, null);
+console.log(arr);
+```
+
+## Object
 
 ```typescript
 let c: {
-  name: string;
-  age: number;
-  adult: boolean;
+  name: any;
+  age: any;
+  isMarried: any;
 };
 
 c = {
-  name: "Nazmul", // Type '{ name: string; }' is missing the following properties from type '{ name: string; age: number; adult: boolean; }': age, adult
-};
-```
-
-```typescript
-c = {
-  name: "Nazmul",
+  name: "Saikat",
   age: 24,
-  //   adult: "yes", // error
-  adult: true,
-  //   address: "Cumilla", // Object literal may only specify known properties, and 'address' does not exist in type '{ name: string; age: number; adult: boolean; }'.
+  isMarried: false,
 };
 console.log(c);
 ```
