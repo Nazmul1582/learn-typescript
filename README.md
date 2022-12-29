@@ -7,11 +7,16 @@
 
 ### Table of Contents
 
-- [Explicit & Union Types](#explicit--union-types) -[Explicit & Union Types for variable](#explicit--union-types-for-variable) -[Explicit & Union Types for array](#explicit--union-types-for-array) -[Explicit & Union Types for object](#explicit--union-types-for-object)
+- [Explicit & Union Types](#explicit--union-types)
+  - [Variable](#variable)
+  - [Function](#function)
+  - [Array](#array)
+  - [Union Type](#union-type)
+  - [Object](#object)
 
 ## Explicit & Union Types
 
-### Explicit & Union Types for variable
+### Variable
 
 ```typescript
 let a: number;
@@ -28,13 +33,13 @@ console.log(b);
 ```
 
 ```typescript
-let c: string | number;
+let c: string | number; // "|" this is union type
 c = "Hello";
 c = 15;
 // c = true; // type boolean is not assignable to type (string | number)
 ```
 
-## Explicit & Union Types for function
+## Function
 
 ```typescript
 function sum(a: number, b: number) {
@@ -50,7 +55,7 @@ function greet(name: string, greeting: string) {
 console.log(greet("Nafiz", "Good morging"));
 ```
 
-## Explicit & Union Types for Array
+## Array
 
 ```typescript
 let a: string[] = [];
@@ -86,7 +91,7 @@ const b: (string | number)[] = [];
 b.push("Nazmul", 24, true); // // Argument of type 'true' is not assignable to parameter of type 'string | number'.
 ```
 
-## Explicit & Union Types for Object
+## Object
 
 ```typescript
 let c: object;
