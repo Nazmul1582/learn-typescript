@@ -1,24 +1,117 @@
 <br />
  <p align="center">
-    <h1 align="center"> TypeScript Editor Setup & Compilation - Lesson2 </h1>
+    <h1 align="center"> Type Basics - Lesson3 </h1>
 </p>
 
 <!-- TABLE OF CONTENTS -->
 
 ### Table of Contents
 
-- [Editor Setup & Compilation](#editor-setup--compilation)
+- [ Strict Type Checking](#strict-type-checking)
 
-## Editor Setup & Compilation
+## Strict Type Checking
 
-1. Write a `index.html` file and a `script.js` file
-2. Now linked the `script.js` file in the `index.html`
-3. Typescript JavaScript ই। তাই আমরা typescript ফাইলে যেকোনো valid JavaScript code লিখলে সেটা valid TypeScript code হবে। Write some JavaScript code (like: `console.log("Hello World!");`) in `script.js`
-4. Now see the output in browser. But ব্রাউজারে আউটপুট দেখাচ্ছে না। কারণ আমার `index.html` ফাইলে লিংক করা আছে `script.js`, এবং আমার ব্রাউজার বুঝতে পারে শুধু `.js`, `.ts` বুঝতে পারে না। So, আমাদেরকে some how `.ts` টাকে কম্পাইল করে js এ কনভার্ট করে দিতে হবে। সেই কাজটাই করে দিবে আমাদের typescript (tsc) কম্পাইলারটা।
-   So, write `tsc script.ts` in terminal and hit enter. Then see the output.
-5. TypeScript vanilla JavaScript এ convert হয়
-6. এখন আমরা একটা TypeScript প্রজেক্ট initialize করব। সেজন্য `tsc –init` commad দিব তাহলে `tsconfig.json` নামে একটা ফাইল তৈরি হবে। `tsconfig.json` ফাইলটা হচ্ছে ট্রান্সক্রিপ্টের কনফিগারেশন ফাইল। এ ফাইলটা typescript কম্পাইলার রিড করতে পারে। এবং সেখানে বিভিন্ন ধরনের configuration variable বলে দেওয়া আছে।
-7. Modify input directory => `"rootDir": "./src"` in compilerOptions of `tsconfig.json`
-8. Modify input directory => `"outDir": "./output"` in compilerOptions of `tsconfig.json`
-9. Now write command only `tsc` ( not need `tsc fileName`).
-10. `tsc -w` command for watch mode. (like nodemon package of node.js)
+### Strict Type Checking for variable
+
+```typescript
+let playerName = "Mashrafi";
+let age = 35;
+
+console.log(playerName);
+
+playerName = 34; // Type 'number' is not assignable to type 'string'
+age = "sakib"; // Type 'string' is not assignable to type 'number'
+playerName = true; // Type 'boolean' is not assignable to type 'string'.
+```
+
+```typescript
+var num = 20;
+num = num - "10"; // here 10 show's error!
+console.log(num);
+```
+
+```typescript
+let isValid = true;
+isValid = "false"; // Type 'string' is not assignable to type 'boolean'
+```
+
+```typescript
+let playerName; // here playerName is undefined. So, it's type is 'any'. and it's possibile to re-assign
+console.log(playerName);
+playerName = "Mashrafi"; // no error
+playerName = 35; // no error
+
+console.log(playerName);
+```
+
+## Strict Type Checking for function
+
+```typescript
+function sum(a, b) {
+  // Parameter 'a' and 'b' implicitly have an 'any' type
+  return a + b;
+}
+console.log(sum(5, 10));
+```
+
+```typescript
+function multiply(a, b) {
+  return a * b;
+}
+console.log(multiply("sakib", 5));
+```
+
+```typescript
+function multiply(a: number, b: number) {
+  return a * b;
+}
+console.log(multiply("abc", 6)); // Argument of type 'string' is not assignable to parameter of type 'number'.
+```
+
+## Strict Type Checking for Array
+
+```typescript
+const fruits = ["apple", "banana"];
+fruits.push("pineapple");
+console.log(fruits);
+
+const fruits = ["apple", "banana"]; // here fruits type is string. So, it's not take other type of property
+fruits.push(35); // Argument of type 'number is not assignable to parameter of type 'string'
+console.log(fruits);
+```
+
+```typescript
+const arr = []; // type any
+arr.push("Bangladesh");
+arr.push(150);
+arr.push(false);
+arr.push(undefined);
+console.log(arr);
+```
+
+```typescript
+const arr = ["hello", 12, true]; // here type is 'string | number | boolean'.
+arr.push("Sakib");
+arr.unshift(100);
+arr.push({ a: 5, b: 10 }); // Argument of type '{ a: number; b: number; }' is not assignable to parameter of type 'string | number | boolean'.
+console.log(arr);
+```
+
+## Strict Type Checking for Object
+
+```typescript
+const player = {
+  // here player is player={name: string, age: number, isCaptain: boolean}
+  name: "Mashrafi",
+  age: 35,
+  isCaptain: true,
+};
+
+player.age = "thirty-five"; // Type 'string' is not assignabe to type 'number'
+player.address = "Magura"; // Property 'address' does not exist on type '{ name: string; age: number; isCaptain: boolean; }'
+```
+
+```typescript
+const obj = {};
+obj.name = "Fahim"; // Property name does not exist on type {},
+```
