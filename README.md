@@ -60,7 +60,6 @@ let players: Player[] = [];
 // players.push("Sakib");  //  Argument of type 'string' is not assignable to parameter of type 'Player'.
 players.push(mashrafi);
 players.push(sakib);
-
 console.log(players);
 ```
 
