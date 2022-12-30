@@ -64,7 +64,7 @@ console.log(mashrafi.name); // Property 'name' is private and only accessible wi
 mashrafi.age = 40;
 console.log(mashrafi.age);
 
-// readonly property can access from anywhere but can't re-assign
+// read-only property can access from anywhere but can't re-assign
 mashrafi.country = "England"; // Cannot assign to 'country' because it is a read-only property.
 console.log(mashrafi.country);
 ```
@@ -93,7 +93,7 @@ console.log(mashrafi.age);
 mashrafi.name = "Shakib"; // Error: Property 'name' is private and only accessible within class 'Player'.
 console.log(mashrafi.name); // Error: Property 'name' is private and only accessible within class 'Player'.
 
-// readonly property can access from anywhere but can't re-assign
+// read-only property can access from anywhere but can't re-assign
 mashrafi.country = "England"; // Error: Cannot assign to 'country' because it is a read-only property.
 console.log(mashrafi.country);
 ```
