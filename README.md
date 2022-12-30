@@ -157,3 +157,5 @@ export default class Player implements IsPlayer {
   }
 }
 ```
+
+<br/>
