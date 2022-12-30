@@ -1,33 +1,76 @@
-// Working with class - typescript - lesson9
+// Access modifier - typescript
+
+// class Player {
+//   name: string;
+//   age: number;
+//   country: string;
+//   constructor(n: string, a: number, c: string) {
+//     this.name = n;
+//     this.age = a;
+//     this.country = c;
+//   }
+//   info() {
+//     console.log(
+//       `${this.name} is ${this.age} years old and he's from ${this.country}`
+//     );
+//   }
+// }
+// const mashrafi = new Player("Mashrafi", 36, "Bangladesh");
+// mashrafi.name = "Sakib";
+// mashrafi.age = 40;
+// mashrafi.country = "England";
+// console.log(mashrafi.name);
+// console.log(mashrafi.age);
+// console.log(mashrafi.country);
+
+// class Player {
+//   private name: string;
+//   public age: number;
+//   readonly country: string;
+//   constructor(n: string, a: number, c: string) {
+//     this.name = n;
+//     this.age = a;
+//     this.country = c;
+//   }
+//   info() {
+//     console.log(
+//       `${this.name} is ${this.age} years old and he's from ${this.country}`
+//     );
+//   }
+// }
+// const mashrafi = new Player("Mashrafi", 36, "Bangladesh");
+
+// private property can't access and re-assign outside of class.
+// // mashrafi.name = "Sakib";  // Property 'name' is private and only accessible within class 'Player'.
+// // console.log(mashrafi.name);  // Property 'name' is private and only accessible within class 'Player'.
+
+// mashrafi.age = 40;
+// console.log(mashrafi.age);
+
+// // mashrafi.country = "England"; // Cannot assign to 'country' because it is a read-only property.
+// console.log(mashrafi.country);
 
 class Player {
-  name: string;
-  age: number;
-  country: string;
-  constructor(n: string, a: number, c: string) {
-    this.name = n;
-    this.age = a;
-    this.country = c;
-  }
-  info() {
+  constructor(
+    private name: string,
+    public age: number,
+    readonly country: string
+  ) {}
+  playerInfo() {
     console.log(
-      `${this.name} is ${this.age} years old and he comes from ${this.country}`
+      `${this.name} is ${this.age} years old and he's from ${this.country}`
     );
   }
 }
 const mashrafi = new Player("Mashrafi", 36, "Bangladesh");
-const sakib = new Player("Sakib", 35, "Bangladesh");
-console.log(sakib);
 
-// here we can access and re-assign object's properties;
-console.log(sakib.age);
-sakib.age = 34;
-console.log(sakib);
+mashrafi.age = 40;
+console.log(mashrafi.age);
 
-// let players: string[] = [];
+// private property can't access and re-assign outside of class.
+// mashrafi.name = "Shakib"; // Property 'name' is private and only accessible within class 'Player'.
+// console.log(mashrafi.name); // Property 'name' is private and only accessible within class 'Player'.
 
-let players: Player[] = [];
-// players.push("Sakib");  //  Argument of type 'string' is not assignable to parameter of type 'Player'.
-players.push(mashrafi);
-players.push(sakib);
-console.log(players);
+// readonly property can access from anywhere but can't re-assign
+// mashrafi.country = "England"; // Cannot assign to 'country' because it is a read-only property.
+console.log(mashrafi.country);
