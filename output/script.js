@@ -1,11 +1,25 @@
 "use strict";
-// Type Aliases - TypeScript - Lesson7
-// without using type aliases
-const userDetails = (id, user) => {
-    console.log(`User id is ${id}, name is ${user.name} and age is ${user.age}`);
-};
-userDetails(101, { name: "Saikat", age: 24 });
-const sayHello = (user) => {
-    console.log(`Hello, ${user.age > 50 ? "Sir" : "Mr."} ${user.name}!`);
-};
-sayHello({ name: "Sakil", age: 27 });
+// Working with class - typescript - lesson9
+class Player {
+    constructor(n, a, c) {
+        this.name = n;
+        this.age = a;
+        this.country = c;
+    }
+    info() {
+        console.log(`${this.name} is ${this.age} years old and he comes from ${this.country}`);
+    }
+}
+const mashrafi = new Player("Mashrafi", 36, "Bangladesh");
+const sakib = new Player("Sakib", 35, "Bangladesh");
+console.log(sakib);
+// here we can access and re-assign object's properties;
+console.log(sakib.age);
+sakib.age = 34;
+console.log(sakib);
+// let players: string[] = [];
+let players = [];
+// players.push("Sakib");  //  Argument of type 'string' is not assignable to parameter of type 'Player'.
+players.push(mashrafi);
+players.push(sakib);
+console.log(players);
