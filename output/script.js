@@ -1,23 +1,18 @@
-// Interfaces  - TypeScript - Lesson12
-import Player from "./classes/Player.js";
-const mashrafi = new Player("Mashrafi", 36, "Bangladesh");
-let sakib;
-sakib = new Player("Sakib", 35, "Bangladesh");
-const players = [];
-players.push(mashrafi, sakib);
-console.log(players);
-// interface rectangleOptions {
-//   length: number;
-//   width: number;
-// }
-// const drawRectangle = (options: rectangleOptions) => {
-//   let length = options.length;
-//   let width = options.width;
-//   console.log(length, width);
-// };
-// const threeDOption = {
-//   length: 30,
-//   width: 20,
-//   height: 10,
-// };
-// drawRectangle(threeDOption);
+"use strict";
+// Enum - typescript - lesson13
+var responseType;
+(function (responseType) {
+    responseType[responseType["SUCCESS"] = 0] = "SUCCESS";
+    responseType[responseType["FAILURE"] = 1] = "FAILURE";
+    responseType[responseType["UNAUTHENTICATED"] = 2] = "UNAUTHENTICATED";
+    responseType[responseType["FORBIDDEN"] = 3] = "FORBIDDEN";
+})(responseType || (responseType = {}));
+const response = {
+    status: 200,
+    type: responseType.UNAUTHENTICATED,
+    data: {
+        key: 101,
+        value: "test",
+    },
+};
+console.log(response);
