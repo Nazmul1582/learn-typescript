@@ -1,4 +1,4 @@
-// Enum - typescript - lesson13
+// Enum - typescript - lesson14
 
 enum responseType {
   SUCCESS,
