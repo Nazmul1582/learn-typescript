@@ -26,7 +26,7 @@ interface APIResponse<T> {
 }
 const response: APIResponse<object> = {
   status: 200,
-  type: responseType.UNAUTHENTICATED,
+  type: responseType.SUCCESS,
   data: {
     key: 101,
     value: "test",
