@@ -3,8 +3,6 @@
     <h1 align="center"> Generic - TypeScript - Lesson13 </h1>
 </p>
 
-<!-- TABLE OF CONTENTS -->
-
 ### Table of Contents
 
 - [Generic](#generic)
