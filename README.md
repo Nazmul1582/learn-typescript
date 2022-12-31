@@ -8,11 +8,13 @@
 ### Table of Contents
 
 - [Generic](#generic)
+  - [Before Generic](#before-generic)
+  - [After Generic](#after-generic)
   - [Generic and Interface both](#generic-and-interface-both)
 
 ## Generic
 
-**1. Before Generic**
+## Before Generic
 
 ```typescript
 const addID = (obj: object) => {
@@ -27,7 +29,7 @@ const user = addID({
 
 ![Before Generic](./images/before-generic.png)
 
-**2. After Generic**
+## After Generic
 
 ```typescript
 const addID = <T>(obj: T) => {
