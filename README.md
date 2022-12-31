@@ -1,129 +1,144 @@
 <br />
  <p align="center">
-    <h1 align="center"> Generic - TypeScript - Lesson13 </h1>
+    <h1 align="center"> Interface - TypeScript - Lesson12 </h1>
 </p>
 
 <!-- TABLE OF CONTENTS -->
 
 ### Table of Contents
 
-- [Generic](#generic)
-  - [Generic and Interface both](#generic-and-interface-both)
+- [Interfaces](#interfaces)
 
-## Generic
+## Interfaces
 
-**1. Before Generic**
+1.
 
 ```typescript
-const addID = (obj: object) => {
-  let id = Math.floor(Math.random() * 100);
-  return { ...obj, id };
+interface rectangleOptions {
+  length: number;
+  width: number;
+}
+const drawRectangle = (options: rectangleOptions) => {
+  let length = options.length;
+  let width = options.width;
+  console.log(length, width);
 };
-const user = addID({
-  name: "Mashrafi",
-  age: 35,
+drawRectangle({
+  length: 30,
+  width: 20,
+  height: 10, // error: bcz height is invalid in rectangleOptions
 });
 ```
 
-![Before Generic](./images/before-generic.png)
-
-**2. After Generic**
+2.
 
 ```typescript
-const addID = <T>(obj: T) => {
-  let id = Math.floor(Math.random() * 100);
-  return { ...obj, id };
+interface rectangleOptions {
+  length: number;
+  width: number;
+}
+const drawRectangle = (options: rectangleOptions) => {
+  let length = options.length;
+  let width = options.width;
+  console.log(length, width);
 };
-const user = addID({
-  name: "Mashrafi",
-  age: 35,
-});
-console.log(user.name);
+const threeDOption = {
+  length: 30,
+  width: 20,
+  height: 10,
+};
+drawRectangle(threeDOption);
 ```
 
-![After Generic](./images/after-generic.png)
-
-**3. but the problem is:**
+3. Make interface in ./interface/IsPlayer.ts file and implements in ./classes/Player.ts file
 
 ```typescript
-const addID = <T>(obj: T) => {
-  let id = Math.floor(Math.random() * 100);
-  return { ...obj, id };
-};
-const user = addID("Mashrafi"); // Now addID() takes also string and etc.
-```
-
-**4. Generic => more specific**
-
-```typescript
-const addID = <T extends object>(obj: T) => {
-  let id = Math.floor(Math.random() * 100);
-  return { ...obj, id };
-};
-const user = addID("Mashrafi"); // Error: Argument of type 'string' is not assignable to parameter of type 'object'
-
-const addID = <T extends object>(obj: T) => {
-  let id = Math.floor(Math.random() * 100);
-  return { ...obj, id };
-};
-const user = addID({
-  name: "Mashrafi",
-  age: 36,
-});
-console.log(user.name);
-```
-
-**4. Generic => more specific 2**
-
-```typescript
-const addID = <
-  T extends {
-    name: string;
-    age: number;
+// ./interface/IsPlayer.ts
+export interface IsPlayer {
+  name: string;
+  age: number;
+  country: string;
+  play(): void;
+}
+// ./classes/Player.ts
+import { IsPlayer } from "../interface/IsPlayer.js";
+export default class Player implements IsPlayer {
+  constructor(
+    public name: string,
+    public age: number,
+    readonly country: string
+  ) {}
+  playerInfo() {
+    console.log(
+      `${this.name} is ${this.age} years old. He's from ${this.country}`
+    );
   }
->(
-  obj: T
-) => {
-  let id = Math.floor(Math.random() * 100);
-  return { ...obj, id };
-};
-const user = addID({
-  name: "Mashrafi",
-  age: 36,
-});
-console.log(user.age);
+}
 ```
 
-## Generic and Interface both
+4.
 
 ```typescript
-interface APIResponse<T> {
-  status: number;
-  type: string;
-  data: T;
+// ./interface/IsPlayer.ts
+export interface IsPlayer {
+  name: string;
+  age: number;
+  country: string;
+  playerInfo(): void;
 }
-const response: APIResponse<object> = {
-  status: 300,
-  type: "something",
-  data: {
-    value: "something",
-    num: 150,
-  },
-};
+// ./srcipt.ts
+import Player from "./classes/Player.js";
+import { IsPlayer } from "./interface/IsPlayer.js";
+const mashrafi = new Player("Mashrafi", 36, "Bangladesh");
+let sakib: IsPlayer;
+sakib = new Player("Sakib", 35, "Bangladesh");
 ```
+
+5.
 
 ```typescript
-interface APIResponse<T> {
-  status: number;
-  type: string;
-  data: T;
+// ./interface/IsPlayer.ts
+export interface IsPlayer {
+  name: string;
+  age: number;
+  country: string;
+  playerInfo(): void;
 }
-
-const response: APIResponse<string> = {
-  status: 200,
-  type: "something",
-  data: "test",
-};
+// ./script.ts
+import Player from "./classes/Player.js";
+import { IsPlayer } from "./interface/IsPlayer.js";
+const mashrafi = new Player("Mashrafi", 36, "Bangladesh");
+let sakib: IsPlayer;
+sakib = new Player("Sakib", 35, "Bangladesh");
+const players: IsPlayer[] = [];
+players.push(mashrafi, sakib);
+console.log(players);
 ```
 
-<br/>
+6.
+
+```typescript
+// ./interface/IsPlayer.ts
+export interface IsPlayer {
+  name: string;
+  readonly country: string;
+  getProperty(): number;
+  playerInfo(): void;
+}
+// ./classes/Player.ts
+export default class Player implements IsPlayer {
+  constructor(
+    public name: string,
+    private age: number,
+    readonly country: string
+  ) {}
+  getProperty() {
+    return this.age;
+  }
+  playerInfo() {
+    console.log(
+      `${this.name} is ${this.age} years old. He's from ${this.country}`
+    );
+  }
+}
+```
