@@ -10,7 +10,7 @@ console.log(a);
 // but replacing any property of a by other type is impossible.
 // a[0] = true; // Error: Type 'boolean' is not assignable to type 'string | number | { country: string; }'.
 // using tuple:
-const b: [string, number, object] = ["Sakib", 35, { country: "BD" }];
+const b: [string, number, object] = ["Yeasin", 35, { country: "BD" }];
 b[0] = "Abdullah";
 // b[0] = 25; // Error: Type 'number' is not assignable to type 'string'.
 console.log(b);

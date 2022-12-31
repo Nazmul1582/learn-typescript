@@ -31,7 +31,7 @@ console.log(a);
 
 ```typescript
 // here, array's type of index have to fixed.
-const b: [string, number, object] = ["Sakib", 35, { country: "BD" }];
+const b: [string, number, object] = ["Yeasin", 35, { country: "BD" }];
 b[0] = "Abdullah";
 b[0] = 25; // Error: Type 'number' is not assignable to type 'string'.
 console.log(b);
